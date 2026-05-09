@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetim Paneli | Şanlıurfa Derneği</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- Login -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-box glass-panel">
+            <h2 style="margin-bottom:1.5rem;text-align:center;color:var(--primary);">Yönetim Paneli</h2>
+            <form id="loginForm">
+                <div class="form-group"><label>Kullanıcı Adı</label><input type="text" id="username" required></div>
+                <div class="form-group"><label>Şifre</label><input type="password" id="password" required></div>
+                <p id="loginError" style="color:#ff4d4f;font-size:.875rem;display:none;margin-bottom:1rem;">Hatalı giriş!</p>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Giriş Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard" style="display:none;">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header"><h2>Admin</h2></div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-tab="settings"><i data-lucide="settings"></i> Temel Ayarlar</a>
+                <a href="#" class="nav-item" data-tab="stats"><i data-lucide="bar-chart"></i> İstatistikler</a>
+                <a href="#" class="nav-item" data-tab="blogs"><i data-lucide="layout-dashboard"></i> İçerik & Sayfalar</a>
+                <a href="#" class="nav-item" id="logoutBtn" style="color:#ff4d4f;margin-top:auto;"><i data-lucide="log-out"></i> Çıkış Yap</a>
+            </nav>
+        </aside>
+
+        <!-- Main -->
+        <main class="main-content">
+
+            <!-- Topbar -->
+            <header class="topbar">
+                <h1 id="topbarTitle">Yönetim Paneli</h1>
+                <div style="display:flex;gap:.75rem;align-items:center;">
+                    <!-- Add New Dropdown -->
+                    <div class="dropdown-wrap">
+                        <button class="btn btn-primary" onclick="toggleDropdown()"><i data-lucide="plus"></i> Yeni Ekle</button>
+                        <div class="dropdown-menu" id="addDropdown">
+                            <button onclick="openNewItem('Haber');toggleDropdown()"><i data-lucide="newspaper"></i> Haber</button>
+                            <button onclick="openNewItem('Duyuru');toggleDropdown()"><i data-lucide="megaphone"></i> Duyuru</button>
+                            <button onclick="openNewItem('Sayfa');toggleDropdown()"><i data-lucide="file-text"></i> Menü Sayfası</button>
+                            <button onclick="openNewItem('TemelDeger');toggleDropdown()"><i data-lucide="star"></i> Temel Değer</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline btn-sm" onclick="window.open('http://localhost:3000/','_blank')">
+                        <i data-lucide="external-link"></i> Canlı Önizleme
+                    </button>
+                </div>
+            </header>
+
+            <!-- Tabs -->
+            <div class="tab-area">
+
+                <!-- Temel Ayarlar -->
+                <div id="tab-settings" class="tab-content active">
+                    <div class="card glass-panel">
+                        <h3>Ana Sayfa Karşılama Alanı</h3>
+                        <form id="settingsForm">
+                            <div class="form-group"><label>Ana Başlık (HTML destekler)</label><textarea id="setHeroTitle" rows="2"></textarea></div>
+                            <div class="form-group"><label>Alt Açıklama</label><textarea id="setHeroSubtitle" rows="3"></textarea></div>
+                            <div class="form-group">
+                                <label>Arka Plan Görseli</label>
+                                <div style="display:flex;gap:1rem;align-items:center;">
+                                    <input type="text" id="setHeroImage" readonly style="background:#f5f5f5;">
+                                    <input type="file" id="heroImageFile" accept="image/*" style="display:none;">
+                                    <button type="button" class="btn btn-outline" onclick="document.getElementById('heroImageFile').click()">Görsel Yükle</button>
+                                </div>
+                                <img id="heroImagePreview" src="" style="max-height:150px;margin-top:1rem;border-radius:8px;display:none;">
+                            </div>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label>Ana Renk (Primary)</label>
+                                    <div style="display:flex;gap:1rem;align-items:center;">
+                                        <input type="color" id="setThemePrimary" style="padding:0;width:50px;height:40px;border:none;background:transparent;cursor:pointer;">
+                                        <input type="text" id="setThemePrimaryHex" style="border:1px solid var(--border);padding:.4rem .5rem;border-radius:4px;font-weight:bold;width:100px;">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Vurgu Rengi (Accent)</label>
+                                    <div style="display:flex;gap:1rem;align-items:center;">
+                                        <input type="color" id="setThemeAccent" style="padding:0;width:50px;height:40px;border:none;background:transparent;cursor:pointer;">
+                                        <input type="text" id="setThemeAccentHex" style="border:1px solid var(--border);padding:.4rem .5rem;border-radius:4px;font-weight:bold;width:100px;">
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 style="margin:1.5rem 0 1rem;color:var(--primary);">Sosyal Medya Bağlantıları</h4>
+                            <div class="grid-2">
+                                <div class="form-group"><label>Facebook</label><input type="text" id="setSocialFacebook" placeholder="https://facebook.com/..."></div>
+                                <div class="form-group"><label>Twitter (X)</label><input type="text" id="setSocialTwitter" placeholder="https://x.com/..."></div>
+                                <div class="form-group"><label>Instagram</label><input type="text" id="setSocialInstagram" placeholder="https://instagram.com/..."></div>
+                                <div class="form-group"><label>YouTube</label><input type="text" id="setSocialYoutube" placeholder="https://youtube.com/..."></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="margin-top:1rem;">Ayarları Kaydet</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- İstatistikler -->
+                <div id="tab-stats" class="tab-content">
+                    <div class="card glass-panel">
+                        <h3>İstatistikleri Güncelle</h3>
+                        <form id="statsForm">
+                            <div class="grid-2">
+                                <div class="form-group"><label>Aktif Üye Sayısı</label><input type="number" id="statStudents"></div>
+                                <div class="form-group"><label>Yıllık Etkinlik Sayısı</label><input type="number" id="statPrograms"></div>
+                                <div class="form-group"><label>Kuruluş Yılı</label><input type="number" id="statEstablished"></div>
+                                <div class="form-group"><label>Bursiyer Öğrenci</label><input type="number" id="statAlumni"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">İstatistikleri Kaydet</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- İçerik & Sayfalar -->
+                <div id="tab-blogs" class="tab-content">
+                    <div class="blogs-split">
+
+                        <!-- Sol: Grup Listeleri -->
+                        <div class="blogs-list-col">
+
+                            <div class="content-group">
+                                <div class="group-header">
+                                    <div class="group-header-left"><i data-lucide="newspaper"></i><h4>Haberler & Duyurular</h4></div>
+                                    <button class="btn btn-sm btn-outline" onclick="openNewItem('Haber')">+ Ekle</button>
+                                </div>
+                                <div id="listHaberler" class="content-cards"></div>
+                            </div>
+
+                            <div class="content-group">
+                                <div class="group-header">
+                                    <div class="group-header-left"><i data-lucide="file-text"></i><h4>Menü Sayfaları</h4></div>
+                                    <button class="btn btn-sm btn-outline" onclick="openNewItem('Sayfa')">+ Ekle</button>
+                                </div>
+                                <div id="listSayfalar" class="content-cards"></div>
+                            </div>
+
+                            <div class="content-group">
+                                <div class="group-header">
+                                    <div class="group-header-left"><i data-lucide="star"></i><h4>Temel Değerlerimiz</h4></div>
+                                    <button class="btn btn-sm btn-outline" onclick="openNewItem('TemelDeger')">+ Ekle</button>
+                                </div>
+                                <div id="listTemelDeger" class="content-cards"></div>
+                            </div>
+
+                        </div>
+
+                        <!-- Sağ: Düzenleme Formu -->
+                        <div class="edit-panel" id="editPanel">
+                            <div class="edit-placeholder" id="editPlaceholder">
+                                <i data-lucide="mouse-pointer-click" style="width:48px;height:48px;color:#ccc;"></i>
+                                <p style="color:#aaa;margin-top:1rem;text-align:center;">Düzenlemek için sol taraftan<br>bir içerik seçin</p>
+                            </div>
+                            <div id="editPanelForm" style="display:none;height:100%;overflow-y:auto;padding:1.5rem;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
+                                    <h3 id="editPanelTitle" style="margin:0;">Düzenle</h3>
+                                    <button type="button" class="btn btn-sm btn-outline" onclick="closeEditPanel()"><i data-lucide="x"></i></button>
+                                </div>
+
+                                <form id="blogForm">
+                                    <input type="hidden" id="blogId">
+
+                                    <!-- Tür Seçici -->
+                                    <div class="form-group">
+                                        <label>İçerik Türü</label>
+                                        <div id="typeSelector" style="display:flex;gap:.5rem;flex-wrap:wrap;"></div>
+                                        <input type="hidden" id="blogType">
+                                    </div>
+
+                                    <!-- Başlık -->
+                                    <div class="form-group"><label>Başlık</label><input type="text" id="blogTitle" required></div>
+
+                                    <!-- İkon (TemelDeger) -->
+                                    <div class="form-group" id="iconFieldGroup" style="display:none;">
+                                        <label>İkon</label>
+                                        <div style="display:flex;gap:.75rem;align-items:center;">
+                                            <div id="iconPreview" class="icon-preview-box"></div>
+                                            <input type="text" id="blogIcon" placeholder="İkon seçin..." readonly style="cursor:pointer;flex:1;" onclick="openIconPicker()">
+                                            <button type="button" class="btn btn-outline btn-sm" onclick="openIconPicker()">Seç</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Kapak Görseli -->
+                                    <div class="form-group" id="imageFieldGroup">
+                                        <label>Kapak Görseli</label>
+                                        <div style="display:flex;gap:.75rem;">
+                                            <input type="text" id="blogImage" readonly style="flex:1;">
+                                            <input type="file" id="blogImageFile" accept="image/*" style="display:none;">
+                                            <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('blogImageFile').click()">Yükle</button>
+                                        </div>
+                                        <img id="blogImagePreview" src="" style="max-height:100px;margin-top:.5rem;border-radius:8px;display:none;">
+                                    </div>
+
+                                    <!-- Hizalama -->
+                                    <div class="form-group" id="bgPosFieldGroup">
+                                        <label>Dikey Görsel Hizalama (0% Üst → 100% Alt)</label>
+                                        <div style="display:flex;align-items:center;gap:1rem;">
+                                            <input type="range" id="blogBgPosition" min="0" max="100" value="50" style="flex:1;cursor:pointer;">
+                                            <span id="blogBgPositionVal" style="width:40px;font-weight:bold;text-align:right;">50%</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Özel URL (Sayfa) -->
+                                    <div class="form-group" id="customIdFieldGroup" style="display:none;">
+                                        <label>Özel URL ID (Örn: hakkimizda)</label>
+                                        <input type="text" id="blogCustomId" placeholder="Otomatik oluşturulması için boş bırakın">
+                                        <small style="color:var(--primary);">Erişim: page.html?id=<span id="customIdHint">...</span></small>
+                                    </div>
+
+                                    <!-- İçerik -->
+                                    <div class="form-group"><label>İçerik / Açıklama</label><textarea id="blogContent" rows="7"></textarea></div>
+
+                                    <!-- Link (TemelDeger) -->
+                                    <div class="form-group" id="linkFieldGroup" style="display:none;">
+                                        <label>Bağlantı Linki (opsiyonel)</label>
+                                        <input type="text" id="blogLink" placeholder="page.html?id=...">
+                                    </div>
+
+                                    <!-- Slider Toggle -->
+                                    <div class="form-group" id="sliderFieldGroup">
+                                        <label style="display:flex;align-items:center;gap:.6rem;cursor:pointer;font-weight:600;color:var(--primary);">
+                                            <input type="checkbox" id="blogSlider" style="width:18px;height:18px;accent-color:var(--primary);cursor:pointer;">
+                                            Ana sayfada haber slider'ında göster
+                                        </label>
+                                    </div>
+
+                                    <div style="display:flex;gap:1rem;padding-top:1rem;border-top:1px solid var(--border);">
+                                        <button type="submit" class="btn btn-primary" style="flex:1;"><i data-lucide="save"></i> Kaydet</button>
+                                        <button type="button" class="btn btn-danger btn-sm" id="deleteBlogBtn"><i data-lucide="trash-2"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Icon Picker Modal -->
+    <div id="iconPickerModal" class="modal-overlay" onclick="if(event.target===this)closeIconPicker()">
+        <div class="modal-content glass-panel" style="max-width:560px;max-height:80vh;display:flex;flex-direction:column;" onclick="event.stopPropagation()">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+                <h3 style="margin:0;">İkon Seç</h3>
+                <button class="btn btn-sm btn-outline" onclick="closeIconPicker()"><i data-lucide="x"></i></button>
+            </div>
+            <input type="text" id="iconSearch" placeholder="İkon ara... (örn: heart, star, book)" style="margin-bottom:1rem;" oninput="filterIcons(this.value)">
+            <div class="icon-grid" id="iconGrid"></div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast">Başarıyla kaydedildi!</div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

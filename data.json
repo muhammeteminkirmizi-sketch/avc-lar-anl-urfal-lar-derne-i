@@ -1,0 +1,88 @@
+{
+  "settings": {
+    "heroTitle": "Birlikte <br><span class=\"text-gradient\">Daha Güçlüyüz</span>",
+    "heroSubtitle": "Avcılar-Şanlıurfa Birlik ve Dayanışma Derneği olarak kültürümüzü yaşatıyor, yardımlaşmayı büyütüyoruz.",
+    "heroImage": "/uploads/1778330808611-535100725.jpg",
+    "themePrimary": "#008000",
+    "themeAccent": "#FFFF00",
+    "socialFacebook": "",
+    "socialTwitter": "",
+    "socialInstagram": "https://www.instagram.com/sanliurfalilardernegi/",
+    "socialYoutube": ""
+  },
+  "stats": {
+    "students": 500,
+    "programs": 25,
+    "established": 2005,
+    "alumni": 1500
+  },
+  "news": [
+    {
+      "id": "1",
+      "date": "10.05.2026",
+      "type": "Duyuru",
+      "title": "Geleneksel Sıra Gecesi Etkinliğimize Davetlisiniz",
+      "description": "Derneğimiz tarafından düzenlenen Geleneksel Sıra Gecesi etkinliğimizde tüm hemşehrilerimizi aramızda görmekten mutluluk duyarız.",
+      "link": "#"
+    },
+    {
+      "id": "2",
+      "date": "05.05.2026",
+      "type": "Haber",
+      "title": "Eğitim Bursu Başvuruları Başladı",
+      "description": "Şanlıurfalı öğrencilerimiz için 2026-2027 eğitim-öğretim yılı burs başvuruları başlamıştır.",
+      "link": "#"
+    }
+  ],
+  "blogs": [
+    {
+      "id": "hakkimizda",
+      "title": "Hakkımızda",
+      "image": "/uploads/1778331277226-543969591.jpg",
+      "content": "Avcılar-Şanlıurfa Birlik ve Dayanışma Derneği olarak, kültürümüzü yeni nesillere aktarmak ve İstanbul'da yaşayan hemşehrilerimiz arasında dayanışmayı güçlendirmek amacıyla faaliyetlerimizi sürdürmekteyiz.\n\nKültürel mirasımıza sahip çıkıyor, birlik ve beraberliğimizi güçlendiriyoruz.",
+      "type": "Sayfa",
+      "date": "09.05.2026",
+      "bgPosition": "10"
+    },
+    {
+      "id": "yonetim",
+      "title": "Yönetim Kurulu",
+      "image": "/uploads/1778331121730-409978273.png",
+      "content": "Derneğimizin yönetim kurulu üyeleri:\n\nBaşkan: [Başkanın Adı]\nBaşkan Yardımcısı: [Yardımcı Adı]\nGenel Sekreter: [Sekreter Adı]\nSayman: [Sayman Adı]\n\nYönetim kurulumuz özveriyle çalışmalarına devam etmektedir.",
+      "type": "Sayfa",
+      "date": "09.05.2026",
+      "bgPosition": "32",
+      "icon": "",
+      "link": "",
+      "slider": false
+    },
+    {
+      "id": "faaliyetler",
+      "title": "Faaliyetlerimiz",
+      "image": "/uploads/1778330923933-259230115.jpg",
+      "content": "- Eğitim Bursları\n- Kültürel Geziler\n- Sıra Geceleri\n- Ramazan Ayı İftar Çadırları\n- İhtiyaç Sahiplerine Erzak Yardımı\n\nBu faaliyetler siz değerli üyelerimizin katkılarıyla gerçekleşmektedir.",
+      "type": "Sayfa",
+      "date": "09.05.2026"
+    },
+    {
+      "id": "iletisim",
+      "title": "İletişim",
+      "image": "",
+      "content": "Adres: Merkez Mahallesi, Marmara Caddesi No:1, Avcılar / İstanbul\n\nTelefon: 0212 123 45 67\nE-posta: bilgi@avcilarsanliurfa.org.tr\n\nBize her zaman ulaşabilirsiniz.",
+      "type": "Sayfa",
+      "date": "09.05.2026"
+    },
+    {
+      "id": "1778334833446",
+      "title": "Üniversitemiz Hakkında",
+      "image": "/uploads/1778334801337-822231421.jpg",
+      "bgPosition": "50",
+      "content": "İstanbul Topkapı Üniversitesi olarak bu yıl yeni 10 bin öğrenci kayıt olmuştur ",
+      "type": "Duyuru",
+      "icon": "",
+      "link": "",
+      "date": "09.05.2026",
+      "slider": false
+    }
+  ]
+}

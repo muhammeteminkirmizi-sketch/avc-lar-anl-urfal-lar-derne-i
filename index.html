@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avcılar-Şanlıurfa Birlik ve Dayanışma Derneği</title>
+    <meta name="description" content="Avcılar-Şanlıurfa Birlik ve Dayanışma Derneği. Kültürümüzü yaşatıyor, yardımlaşmayı büyütüyoruz.">
+    
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons: Lucide (via CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">ŞANLIURFA</span>
+                <span class="logo-sub">AVCILAR DERNEĞİ</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="page.html?id=hakkimizda" class="nav-link">Hakkımızda</a>
+                <a href="page.html?id=yonetim" class="nav-link">Yönetim Kurulu</a>
+                <a href="page.html?id=faaliyetler" class="nav-link">Faaliyetler</a>
+                <a href="#haberler" class="nav-link">Duyurular</a>
+                <a href="page.html?id=iletisim" class="nav-link">İletişim</a>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="#uye-ol" class="btn btn-primary">Üye Ol</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-nav-links">
+            <a href="page.html?id=hakkimizda">Hakkımızda</a>
+            <a href="page.html?id=yonetim">Yönetim Kurulu</a>
+            <a href="page.html?id=faaliyetler">Faaliyetler</a>
+            <a href="#haberler">Duyurular & Haberler</a>
+            <a href="page.html?id=iletisim" class="btn btn-outline">İletişim</a>
+            <a href="#uye-ol" class="btn btn-primary">Üye Ol</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home" style="background-image: linear-gradient(rgba(15, 118, 110, 0.4), rgba(20, 40, 50, 0.7)), url('https://images.unsplash.com/photo-1596306499300-0b7b168f19fe?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <div class="hero-content reveal-up">
+            <div class="badge">Birlik ve Dayanışmanın Adresi</div>
+            <h1 class="hero-title">Birlikte <br><span class="text-gradient">Daha Güçlüyüz</span></h1>
+            <p class="hero-subtitle">Avcılar-Şanlıurfa Birlik ve Dayanışma Derneği olarak kültürümüzü yaşatıyor, yardımlaşmayı büyütüyoruz.</p>
+            
+            <div class="hero-buttons">
+                <a href="page.html?id=faaliyetler" class="btn btn-primary btn-lg">
+                    <span>Faaliyetlerimizi İncele</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+                <a href="page.html?id=iletisim" class="btn btn-glass btn-lg">
+                    <i data-lucide="phone"></i>
+                    <span>Bize Ulaşın</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span class="mouse">
+                <span class="wheel"></span>
+            </span>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ===== Haber Slider ===== -->
+        <section class="news-slider-section" id="newsSliderSection" style="display:none;">
+            <div class="news-slider-container">
+                <div class="news-slider-track" id="newsSliderTrack"></div>
+                <button class="slider-btn slider-btn-prev" id="sliderPrev"><i data-lucide="chevron-left"></i></button>
+                <button class="slider-btn slider-btn-next" id="sliderNext"><i data-lucide="chevron-right"></i></button>
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card reveal-up" style="transition-delay: 0.1s;">
+                        <div class="stat-icon"><i data-lucide="users"></i></div>
+                        <div class="stat-number" data-target="500">0</div>
+                        <div class="stat-label">Aktif Üye</div>
+                    </div>
+                    
+                    <div class="stat-card reveal-up" style="transition-delay: 0.2s;">
+                        <div class="stat-icon"><i data-lucide="calendar"></i></div>
+                        <div class="stat-number" data-target="25">0</div>
+                        <div class="stat-label">Yıllık Etkinlik</div>
+                    </div>
+                    
+                    <div class="stat-card reveal-up" style="transition-delay: 0.3s;">
+                        <div class="stat-icon"><i data-lucide="history"></i></div>
+                        <div class="stat-number year-stat" data-target="2005">0</div>
+                        <div class="stat-label">Kuruluş Yılı</div>
+                    </div>
+                    
+                    <div class="stat-card reveal-up" style="transition-delay: 0.4s;">
+                        <div class="stat-icon"><i data-lucide="graduation-cap"></i></div>
+                        <div class="stat-number" data-target="1500">0</div>
+                        <div class="stat-label">Bursiyer Öğrenci</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="faculties-section" id="faaliyetler">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2 class="section-title">Temel <span class="text-gradient">Değerlerimiz</span></h2>
+                    <p class="section-desc">Kültürümüzü yaşatmak ve hemşehrilerimiz arasında köprüler kurmak amacıyla gerçekleştirdiğimiz temel faaliyet alanlarımız.</p>
+                </div>
+                
+                <div class="faculties-grid">
+                    <!-- Feature Card 1 -->
+                    <div class="faculty-card glass-panel reveal-up" style="transition-delay: 0.1s;">
+                        <div class="card-image-wrapper">
+                            <div class="card-overlay"></div>
+                            <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1542845634-d920f5c1e5a5?q=80&w=2000&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-icon"><i data-lucide="heart-handshake"></i></div>
+                            <h3>Dayanışma</h3>
+                            <p>İhtiyaç sahibi hemşehrilerimize erzak, giyim ve nakdi yardımlar sağlayarak birliğimizi güçlendiriyoruz.</p>
+                            <a href="page.html?id=faaliyetler" class="card-link">Detaylı Bilgi <i data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Feature Card 2 -->
+                    <div class="faculty-card glass-panel reveal-up" style="transition-delay: 0.2s;">
+                        <div class="card-image-wrapper">
+                            <div class="card-overlay"></div>
+                            <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2000&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-icon"><i data-lucide="book-open"></i></div>
+                            <h3>Eğitim Bursları</h3>
+                            <p>Geleceğimizin teminatı olan başarılı öğrencilerimize düzenli eğitim bursları sağlıyoruz.</p>
+                            <a href="page.html?id=faaliyetler" class="card-link">Burs Başvurusu <i data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Feature Card 3 -->
+                    <div class="faculty-card glass-panel reveal-up" style="transition-delay: 0.3s;">
+                        <div class="card-image-wrapper">
+                            <div class="card-overlay"></div>
+                            <div class="img-placeholder bg-gradient-3"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-icon"><i data-lucide="music"></i></div>
+                            <h3>Kültürel Etkinlikler</h3>
+                            <p>Sıra geceleri, yöresel yemek festivalleri ve kültür turları ile Şanlıurfa kültürünü İstanbul'da yaşatıyoruz.</p>
+                            <a href="page.html?id=faaliyetler" class="card-link">Etkinlikler <i data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News & Announcements -->
+        <section class="news-section" id="haberler" style="padding: 5rem 0; background-color: var(--bg-alt);">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2 class="section-title">Haberler & <span class="text-gradient">Duyurular</span></h2>
+                </div>
+                
+                <div id="newsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <!-- News and Blogs will be rendered here dynamically by script.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section relative overflow-hidden" id="uye-ol">
+            <!-- Background Elements -->
+            <div class="cta-bg-shape"></div>
+            
+            <div class="container relative z-10">
+                <div class="cta-content glass-panel reveal-up">
+                    <h2>Derneğimize Katılın</h2>
+                    <p>Siz de Avcılar-Şanlıurfa Birlik ve Dayanışma Derneği ailesine katılarak kültürümüzü yaşatmaya ve ihtiyaç sahiplerine destek olmaya katkıda bulunabilirsiniz.</p>
+                    <div class="cta-buttons">
+                        <a href="page.html?id=iletisim" class="btn btn-primary btn-lg">Üyelik Başvurusu</a>
+                        <a href="page.html?id=faaliyetler" class="btn btn-outline btn-lg cta-btn-white">Faaliyetlerimizi İncele</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="margin-bottom: 1rem;">
+                        <span class="logo-text">ŞANLIURFA</span>
+                        <span class="logo-sub" style="color: rgba(255,255,255,0.7)">AVCILAR DERNEĞİ</span>
+                    </div>
+                    <p class="footer-desc">Avcılar-Şanlıurfa Birlik ve Dayanışma Derneği olarak kültürümüzü yeni nesillere aktarmak amacıyla faaliyetlerimizi sürdürüyoruz.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" style="background: white; padding: 6px;" title="Instagram"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" style="width: 100%; height: 100%; object-fit: contain;"></a>
+                        <a href="#" class="social-icon" style="background: white; padding: 8px;" title="Twitter / X"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" style="width: 100%; height: 100%; object-fit: contain;"></a>
+                        <a href="#" class="social-icon" style="background: white; padding: 8px;" title="Facebook"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" style="width: 100%; height: 100%; object-fit: contain;"></a>
+                        <a href="#" class="social-icon" style="background: white; padding: 8px;" title="YouTube"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" style="width: 100%; height: 100%; object-fit: contain;"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Kurumsal</h3>
+                    <ul>
+                        <li><a href="page.html?id=hakkimizda">Hakkımızda</a></li>
+                        <li><a href="page.html?id=yonetim">Yönetim Kurulu</a></li>
+                        <li><a href="page.html?id=tuzuk">Dernek Tüzüğü</a></li>
+                        <li><a href="page.html?id=iletisim">İletişim</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Faaliyetler</h3>
+                    <ul>
+                        <li><a href="page.html?id=faaliyetler">Eğitim Bursları</a></li>
+                        <li><a href="page.html?id=faaliyetler">Kültürel Etkinlikler</a></li>
+                        <li><a href="page.html?id=faaliyetler">Sosyal Yardımlar</a></li>
+                        <li><a href="#haberler">Duyurular</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>İletişim</h3>
+                    <div class="contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>Merkez Mah. Marmara Cad. No:1, Avcılar / İstanbul</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>0212 123 45 67</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>bilgi@avcilarsanliurfa.org.tr</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Avcılar-Şanlıurfa Birlik ve Dayanışma Derneği. Tüm hakları saklıdır.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Gizlilik Politikası</a>
+                    <a href="#">KVKK</a>
+                    <a href="admin.html">Yönetim Paneli</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

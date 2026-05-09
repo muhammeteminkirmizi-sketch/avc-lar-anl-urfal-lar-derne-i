@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayfa | Avcılar-Şanlıurfa Derneği</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation (Same as Index but without background image scroll change) -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">ŞANLIURFA</span>
+                <span class="logo-sub">AVCILAR DERNEĞİ</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Ana Sayfa</a>
+                <a href="page.html?id=hakkimizda" class="nav-link">Hakkımızda</a>
+                <a href="page.html?id=yonetim" class="nav-link">Yönetim</a>
+                <a href="page.html?id=faaliyetler" class="nav-link">Faaliyetler</a>
+                <a href="page.html?id=iletisim" class="nav-link">İletişim</a>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="index.html#uye-ol" class="btn btn-primary">Üye Ol</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-nav-links">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="page.html?id=hakkimizda">Hakkımızda</a>
+            <a href="page.html?id=yonetim">Yönetim</a>
+            <a href="page.html?id=faaliyetler">Faaliyetler</a>
+            <a href="page.html?id=iletisim">İletişim</a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header" style="background: var(--primary); padding-top: 150px; padding-bottom: 50px;">
+        <div class="container text-center">
+            <h1 id="dynamicPageTitle" style="color: white; font-size: 3rem;">Yükleniyor...</h1>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <main class="page-content" style="padding-top: 2rem;">
+        <div class="container" style="max-width: 800px; margin: 0 auto;">
+            <div id="dynamicPageContent" class="glass-panel" style="padding: 3rem; min-height: 400px;">
+                <!-- Content will be injected here via script.js -->
+                <div style="display: flex; justify-content: center; align-items: center; height: 200px;">
+                    <div style="width: 40px; height: 40px; border: 4px solid var(--primary); border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                    <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 4rem;">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Avcılar-Şanlıurfa Birlik ve Dayanışma Derneği.</p>
+                <div class="footer-bottom-links">
+                    <a href="admin.html">Yönetim Paneli</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
