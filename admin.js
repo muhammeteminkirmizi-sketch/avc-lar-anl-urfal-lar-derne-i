@@ -1,6 +1,6 @@
 lucide.createIcons();
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = '/api';
 let token = localStorage.getItem('adminToken');
 
 // Elements
@@ -84,7 +84,7 @@ async function loadData() {
         document.getElementById('setHeroImage').value = data.settings.heroImage || '';
         if (data.settings.heroImage) {
             const p = document.getElementById('heroImagePreview');
-            p.src = data.settings.heroImage.startsWith('/') ? `http://localhost:3000${data.settings.heroImage}` : data.settings.heroImage;
+            p.src = data.settings.heroImage;
             p.style.display = 'block';
         }
         document.getElementById('setThemePrimary').value = data.settings.themePrimary || '#0f766e';
@@ -128,7 +128,7 @@ document.getElementById('heroImageFile').addEventListener('change', async (e) =>
         if (res.success) {
             document.getElementById('setHeroImage').value = res.imageUrl;
             const p = document.getElementById('heroImagePreview');
-            p.src = `http://localhost:3000${res.imageUrl}`; p.style.display = 'block';
+            p.src = res.imageUrl; p.style.display = 'block';
         }
     } catch(e) { alert('Yükleme başarısız!'); }
 });
@@ -142,7 +142,7 @@ document.getElementById('blogImageFile').addEventListener('change', async (e) =>
         if (res.success) {
             document.getElementById('blogImage').value = res.imageUrl;
             const p = document.getElementById('blogImagePreview');
-            p.src = `http://localhost:3000${res.imageUrl}`; p.style.display = 'block';
+            p.src = res.imageUrl; p.style.display = 'block';
         }
     } catch(e) { alert('Yükleme başarısız!'); }
 });
@@ -235,7 +235,7 @@ async function editBlog(id) {
     document.getElementById('blogSlider').checked = blog.slider === true || blog.slider === 'true';
 
     const imgPreview = document.getElementById('blogImagePreview');
-    if (blog.image) { imgPreview.src = `http://localhost:3000${blog.image}`; imgPreview.style.display = 'block'; }
+    if (blog.image) { imgPreview.src = blog.image; imgPreview.style.display = 'block'; }
     else imgPreview.style.display = 'none';
 
     let pos = blog.bgPosition || '50';

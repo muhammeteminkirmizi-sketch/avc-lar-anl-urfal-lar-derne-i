@@ -9,7 +9,7 @@ const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 // Load dynamic data from Node.js Backend
 async function loadDynamicData() {
     try {
-        const res = await fetch('http://localhost:3000/api/data');
+        const res = await fetch('/api/data');
         if (!res.ok) return;
         const data = await res.json();
         
@@ -30,9 +30,7 @@ async function loadDynamicData() {
             
             const homeEl = document.getElementById('home');
             if(homeEl && data.settings.heroImage) {
-                const imgUrl = data.settings.heroImage.startsWith('/') 
-                    ? `http://localhost:3000${data.settings.heroImage}` 
-                    : data.settings.heroImage;
+                const imgUrl = data.settings.heroImage;
                 homeEl.style.backgroundImage = `linear-gradient(rgba(15, 118, 110, 0.4), rgba(20, 40, 50, 0.7)), url('${imgUrl}')`;
             }
             
@@ -87,7 +85,7 @@ async function loadDynamicData() {
                     if(blog.type === "Sayfa" || blog.type === "TemelDeger") return; // Bunları haber akışında gösterme
                     
                     let imageHtml = blog.image 
-                        ? `<div style="height: 150px; background-image: url('http://localhost:3000${blog.image}'); background-size: cover; background-position: center; border-radius: 8px; margin-bottom: 1rem;"></div>` 
+                        ? `<div style="height: 150px; background-image: url('${blog.image}'); background-size: cover; background-position: center; border-radius: 8px; margin-bottom: 1rem;"></div>` 
                         : '';
                         
                     newsGrid.innerHTML += `
@@ -137,9 +135,7 @@ async function loadDynamicData() {
                 if(pageData.image) {
                     const pageHeader = document.querySelector('.page-header');
                     if (pageHeader) {
-                        const imgUrl = pageData.image.startsWith('/') 
-                            ? `http://localhost:3000${pageData.image}` 
-                            : pageData.image;
+                        const imgUrl = pageData.image;
                         pageHeader.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('${imgUrl}')`;
                         pageHeader.style.backgroundSize = 'cover';
                         
@@ -286,7 +282,7 @@ function buildNewsSlider(blogs) {
     sliderIndex = 0;
 
     track.innerHTML = sliderItems.map(b => {
-        const imgUrl = b.image ? `http://localhost:3000${b.image}` : 'https://images.unsplash.com/photo-1596306499300-0b7b168f19fe?q=80&w=2070&auto=format&fit=crop';
+        const imgUrl = b.image ? b.image : 'https://images.unsplash.com/photo-1596306499300-0b7b168f19fe?q=80&w=2070&auto=format&fit=crop';
         const typeClass = b.type === 'Duyuru' ? 'slide-type-duyuru' : 'slide-type-haber';
         return `
             <div class="news-slide" style="background-image:url('${imgUrl}');">
