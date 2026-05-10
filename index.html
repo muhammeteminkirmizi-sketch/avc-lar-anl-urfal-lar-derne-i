@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -278,6 +278,33 @@
     </footer>
 
     <!-- Scripts -->
+
+    <div class="ai-assistant" id="aiAssistantWidget">
+        <button class="ai-assistant-toggle" id="aiAssistantToggle" type="button" aria-label="Dernek asistanını aç">
+            <i data-lucide="message-circle"></i>
+        </button>
+        <section class="ai-assistant-panel" id="aiAssistantPanel" aria-label="Dernek yapay zeka asistanı">
+            <div class="ai-assistant-header">
+                <div>
+                    <strong>Dernek Asistanı</strong>
+                    <span>Şanlıurfa kültürü, üyelik ve etkinlikler</span>
+                </div>
+                <button class="ai-assistant-close" id="aiAssistantClose" type="button" aria-label="Asistanı kapat">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="ai-assistant-messages" id="aiAssistantMessages">
+                <div class="ai-message ai-message-bot">Merhaba, ben Avcılar Şanlıurfa Derneği'nin dijital asistanıyım. Size nasıl yardımcı olabilirim?</div>
+            </div>
+            <form class="ai-assistant-form" id="aiAssistantForm">
+                <input id="aiAssistantInput" type="text" placeholder="Sorunuzu yazın..." autocomplete="off" maxlength="500">
+                <button type="submit" aria-label="Gönder"><i data-lucide="send"></i></button>
+            </form>
+        </section>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
+
+

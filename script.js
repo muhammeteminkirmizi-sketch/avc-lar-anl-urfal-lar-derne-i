@@ -1,4 +1,4 @@
-// Initialize Icons
+﻿// Initialize Icons
 lucide.createIcons();
 
 // DOM Elements
@@ -333,5 +333,64 @@ function resetTimer() {
     startTimer();
 }
 
+
+// ===== DERNEK AI ASSISTANT =====
+function initAssistantWidget() {
+    const widget = document.getElementById('aiAssistantWidget');
+    const toggle = document.getElementById('aiAssistantToggle');
+    const panel = document.getElementById('aiAssistantPanel');
+    const closeBtn = document.getElementById('aiAssistantClose');
+    const form = document.getElementById('aiAssistantForm');
+    const input = document.getElementById('aiAssistantInput');
+    const messages = document.getElementById('aiAssistantMessages');
+    if (!widget || !toggle || !panel || !form || !input || !messages) return;
+
+    const addMessage = (text, type) => {
+        const msg = document.createElement('div');
+        msg.className = `ai-message ai-message-${type}`;
+        msg.textContent = text;
+        messages.appendChild(msg);
+        messages.scrollTop = messages.scrollHeight;
+        return msg;
+    };
+
+    const setOpen = (open) => {
+        widget.classList.toggle('active', open);
+        toggle.setAttribute('aria-label', open ? 'Dernek asistanını kapat' : 'Dernek asistanını aç');
+        if (open) input.focus();
+    };
+
+    toggle.addEventListener('click', () => setOpen(!widget.classList.contains('active')));
+    if (closeBtn) closeBtn.addEventListener('click', () => setOpen(false));
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const question = input.value.trim();
+        if (!question) return;
+
+        addMessage(question, 'user');
+        input.value = '';
+        input.disabled = true;
+        const pending = addMessage('Yanıt hazırlanıyor...', 'bot');
+
+        try {
+            const response = await fetch('/api/assistant', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: question })
+            });
+            const data = await response.json();
+            pending.textContent = data.reply || data.message || 'Şu an yanıt veremiyorum, dernek yönetimimize danışabilirsiniz.';
+        } catch (error) {
+            pending.textContent = 'Bağlantı kurulamadı. Lütfen daha sonra tekrar deneyin.';
+        } finally {
+            input.disabled = false;
+            input.focus();
+            messages.scrollTop = messages.scrollHeight;
+        }
+    });
+}
 // Kick off
 loadDynamicData();
+initAssistantWidget();
+
