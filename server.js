@@ -1,4 +1,4 @@
-﻿const express = require('express');
+const express = require('express');
 const multer = require('multer');
 const cors = require('cors');
 const fs = require('fs');
@@ -157,7 +157,8 @@ app.post('/api/assistant', async (req, res) => {
                 .map(item => ({ title: item.title, type: item.type, date: item.date, content: item.content }))
         };
 
-        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${encodeURIComponent(apiKey)}`;
+        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`;
+        
         const aiResponse = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -165,19 +166,36 @@ app.post('/api/assistant', async (req, res) => {
                 systemInstruction: {
                     parts: [{ text: DERNEK_ASSISTANT_INSTRUCTION }]
                 },
-                contents: [{
-                    role: 'user',
-                    parts: [{
-                        text: `Dernek sitesindeki güncel içerik özeti: ${JSON.stringify(context)}\n\nZiyaretçi sorusu: ${message}`
-                    }]
-                }]
+                contents: [
+                    {
+                        role: 'user',
+                        parts: [{ text: `BANA ŞANLIURFA İLE İLGİLİ ETKİNLİKLERİ VER YEMEKLERİ VER TARİFLERİ VER VE ŞİVELİ KONUŞ` }]
+                    },
+                    {
+                        role: 'model',
+                        parts: [{ text: `Merhabalar değerli hemşehrim, başım gözüm üstüne! Avcılar Şanlıurfa Derneği'nin dijital asistanı olarak, Urfa'mızın kadim kültürünü ve lezzetlerini sana anlatmaktan büyük bir şeref duyarım. Bizim derneğimizde kültürümüzü yaşatmak için sık sık **Sıra Geceleri** düzenleriz. Madem canın Urfa lezzetlerini çekti, gel sana sofralarımızın şahı olan **Çiğ Köfte**’nin nasıl yapıldığını anlatayım... Gadasını aldığım, başka bir arzun var mıdır?` }]
+                    },
+                    {
+                        role: 'user',
+                        parts: [{ text: `KÜLTÜRÜMÜZE ÖZGÜ ŞEYLER VER` }]
+                    },
+                    {
+                        role: 'model',
+                        parts: [{ text: `Elbette kıymetli hemşehrim! Şanlıurfa sadece lezzetleriyle değil, asırlara dayanan derin kültürel mirasıyla da bir deryadır. Göbeklitepe, Balıklıgöl, Sıra Geceleri ve Urfa Makamı bizim en önemli değerlerimizdir. Yardımcı olabileceğim başka bir husus var mı?` }]
+                    },
+                    {
+                        role: 'user',
+                        parts: [{ text: `Dernek sitesindeki güncel içerik özeti: ${JSON.stringify(context)}\n\nZiyaretçi sorusu: ${message}` }]
+                    }
+                ]
             })
         });
 
         const result = await aiResponse.json();
+        
         if (!aiResponse.ok) {
             console.error('Gemini API error:', result);
-            return res.status(502).json({ success: false, message: 'Yapay zeka servisi şu an yanıt veremiyor.' });
+            return res.status(502).json({ success: false, message: `API Hatası: ${result.error?.message || 'Bilinmeyen hata'}` });
         }
 
         const reply = result?.candidates?.[0]?.content?.parts
@@ -191,7 +209,7 @@ app.post('/api/assistant', async (req, res) => {
         });
     } catch (err) {
         console.error('Assistant error:', err);
-        res.status(500).json({ success: false, message: 'Yapay zeka asistanı çalışırken bir hata oluştu.' });
+        res.status(502).json({ success: false, message: `Sunucu Hatası: ${err.message || 'Bilinmeyen hata'}` });
     }
 });
 app.listen(PORT, () => {
