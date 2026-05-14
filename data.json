@@ -11,10 +11,10 @@
     "socialYoutube": ""
   },
   "stats": {
-    "students": 500,
-    "programs": 25,
-    "established": 2005,
-    "alumni": 1500
+    "students": "500",
+    "programs": "25",
+    "established": "2020",
+    "alumni": "1500"
   },
   "news": [
     {
@@ -83,6 +83,18 @@
       "link": "",
       "date": "09.05.2026",
       "slider": false
+    },
+    {
+      "id": "1778398766442",
+      "title": "GÖBEKLİTEPE",
+      "image": "",
+      "bgPosition": "50",
+      "content": "Göbeklitepe veya Göbekli Tepe, Türkiye'nin Güneydoğu Anadolu Bölgesi'ndeki Şanlıurfa ilinin 18 km kuzeydoğusunda, Haliliye ilçesine bağlı Örencik köyü yakınlarında yer alan[1] Neolitik bir arkeolojik sit alanıdır. MÖ 9600–9500 civarına tarihlenen Göbeklitepe, dünyanın şu ana kadar bilinen en eski tarihî yapısıdır.[2] Bazı popüler kaynaklarda \"tarihin sıfır noktası\" nitelendirmesiyle de anılmaktadır.[3] Yapıt, dünyanın bilinen en eski megalitleri olan taş sütunlarla, bir dizi büyük dairesel yapıdan oluşmaktadır.[4] Çanak Çömleksiz Neolitik Çağ'a ait olduğu düşünülen bu yapıda T biçimindeki 10-12 dikilitaş yuvarlak planda dizilmiş, araları ise taş duvarlarla örülmüştür. Yapının merkezinde daha yüksek boyda olan iki dikilitaş, karşılıklı olarak yerleştirilmiştir.[4] Bu dikilitaşların çoğu üzerinde insan, eller ve kollar, çeşitli hayvan ve soyut semboller, kabartılarak veya oyularak betimlenmiştir. Bölgede yapılan kazılarda çıkartılan bazı heykel ve taşlar, günümüzde Şanlıurfa Arkeoloji Müzesi'nde sergilenmektedir.[5]",
+      "type": "TemelDeger",
+      "icon": "book-open",
+      "link": "https://tr.wikipedia.org/wiki/G%C3%B6beklitepe",
+      "slider": false,
+      "date": "10.05.2026"
     }
   ]
 }
