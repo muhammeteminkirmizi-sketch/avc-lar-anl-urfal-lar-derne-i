@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -30,7 +30,7 @@
                 <a href="page.html?id=hakkimizda" class="nav-link">Hakkımızda</a>
                 <a href="page.html?id=yonetim" class="nav-link">Yönetim Kurulu</a>
                 <a href="page.html?id=faaliyetler" class="nav-link">Faaliyetler</a>
-                <a href="#haberler" class="nav-link">Duyurular</a>
+                <a href="#haberlerSection" class="nav-link">Duyurular</a>
                 <a href="page.html?id=iletisim" class="nav-link">İletişim</a>
             </div>
             
@@ -49,7 +49,7 @@
             <a href="page.html?id=hakkimizda">Hakkımızda</a>
             <a href="page.html?id=yonetim">Yönetim Kurulu</a>
             <a href="page.html?id=faaliyetler">Faaliyetler</a>
-            <a href="#haberler">Duyurular & Haberler</a>
+            <a href="#haberlerSection">Duyurular & Haberler</a>
             <a href="page.html?id=iletisim" class="btn btn-outline">İletişim</a>
             <a href="#uye-ol" class="btn btn-primary">Üye Ol</a>
         </div>
@@ -84,18 +84,7 @@
 
     <main>
 
-        <!-- ===== Haber Slider ===== -->
-        <section class="news-slider-section" id="newsSliderSection" style="display:none;">
-            <div class="news-slider-container">
-                <div class="news-slider-track" id="newsSliderTrack"></div>
-                <button class="slider-btn slider-btn-prev" id="sliderPrev"><i data-lucide="chevron-left"></i></button>
-                <button class="slider-btn slider-btn-next" id="sliderNext"><i data-lucide="chevron-right"></i></button>
-                <div class="slider-dots" id="sliderDots"></div>
-            </div>
-        </section>
-
         <!-- Stats Section -->
-
         <section class="stats-section">
             <div class="container">
                 <div class="stats-grid">
@@ -126,8 +115,44 @@
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="faculties-section" id="faaliyetler">
+        <!-- ===== Haberler & Duyurular (Slider + Expandable Detail) ===== -->
+        <section id="haberlerSection" data-section="haberler" style="background:#fff;">
+            <div style="padding:3rem 0 0;">
+                <div class="container">
+                    <div class="section-header reveal-up" style="margin-bottom:0;">
+                        <h2 class="section-title">Haberler &amp; <span class="text-gradient">Duyurular</span></h2>
+                        <p class="section-desc">Derneğimizden en güncel haber ve duyurular. Bir habere tıklayın, detayları aşağıda görün.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Slider -->
+            <div class="news-slider-section" id="newsSliderSection" style="display:none; margin-top:1.5rem;">
+                <div class="news-slider-container">
+                    <div class="news-slider-track" id="newsSliderTrack"></div>
+                    <div class="slider-bottom-bar">
+                        <div class="slider-info">
+                            <span class="slider-counter" id="sliderCounter">1 / 1</span>
+                            <div class="slider-progress-wrap"><div class="slider-progress-bar" id="sliderProgressBar"></div></div>
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-btn slider-btn-prev" id="sliderPrev"><i data-lucide="chevron-left"></i></button>
+                            <div class="slider-dots" id="sliderDots"></div>
+                            <button class="slider-btn slider-btn-next" id="sliderNext"><i data-lucide="chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Fallback grid when no news exists -->
+            <div class="container" id="newsGridWrap" style="padding:3rem 0;display:none;">
+                <div id="newsGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;"></div>
+            </div>
+        </section>
+
+        <!-- Features Section (Temel Değerlerimiz) -->
+        <section class="faculties-section" id="temelDegerlerSection" data-section="temelDegerler">
             <div class="container">
                 <div class="section-header reveal-up">
                     <h2 class="section-title">Temel <span class="text-gradient">Değerlerimiz</span></h2>
@@ -176,19 +201,6 @@
                             <a href="page.html?id=faaliyetler" class="card-link">Etkinlikler <i data-lucide="arrow-right"></i></a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- News & Announcements -->
-        <section class="news-section" id="haberler" style="padding: 5rem 0; background-color: var(--bg-alt);">
-            <div class="container">
-                <div class="section-header reveal-up">
-                    <h2 class="section-title">Haberler & <span class="text-gradient">Duyurular</span></h2>
-                </div>
-                
-                <div id="newsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <!-- News and Blogs will be rendered here dynamically by script.js -->
                 </div>
             </div>
         </section>
@@ -245,7 +257,7 @@
                         <li><a href="page.html?id=faaliyetler">Eğitim Bursları</a></li>
                         <li><a href="page.html?id=faaliyetler">Kültürel Etkinlikler</a></li>
                         <li><a href="page.html?id=faaliyetler">Sosyal Yardımlar</a></li>
-                        <li><a href="#haberler">Duyurular</a></li>
+                        <li><a href="#haberlerSection">Duyurular</a></li>
                     </ul>
                 </div>
                 
@@ -277,8 +289,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-
+    <!-- AI Assistant Widget -->
     <div class="ai-assistant" id="aiAssistantWidget">
         <button class="ai-assistant-toggle" id="aiAssistantToggle" type="button" aria-label="Dernek asistanını aç">
             <i data-lucide="message-circle"></i>
@@ -306,5 +317,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-

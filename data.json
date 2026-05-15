@@ -8,7 +8,14 @@
     "socialFacebook": "",
     "socialTwitter": "",
     "socialInstagram": "https://www.instagram.com/sanliurfalilardernegi/",
-    "socialYoutube": ""
+    "socialYoutube": "",
+    "sectionOrder": [
+      "haberler",
+      "temelDegerler"
+    ],
+    "heroImageX": 49,
+    "heroImageY": 67,
+    "heroImageZoom": 100
   },
   "stats": {
     "students": "500",
@@ -42,7 +49,8 @@
       "content": "Avcılar-Şanlıurfa Birlik ve Dayanışma Derneği olarak, kültürümüzü yeni nesillere aktarmak ve İstanbul'da yaşayan hemşehrilerimiz arasında dayanışmayı güçlendirmek amacıyla faaliyetlerimizi sürdürmekteyiz.\n\nKültürel mirasımıza sahip çıkıyor, birlik ve beraberliğimizi güçlendiriyoruz.",
       "type": "Sayfa",
       "date": "09.05.2026",
-      "bgPosition": "10"
+      "bgPosition": "10",
+      "order": 0
     },
     {
       "id": "yonetim",
@@ -54,7 +62,13 @@
       "bgPosition": "32",
       "icon": "",
       "link": "",
-      "slider": false
+      "slider": false,
+      "order": 1,
+      "imageX": 42,
+      "imageY": 42,
+      "imageZoom": 100,
+      "titleColor": "#1a1a2e",
+      "contentColor": "#444444"
     },
     {
       "id": "faaliyetler",
@@ -62,7 +76,8 @@
       "image": "/uploads/1778330923933-259230115.jpg",
       "content": "- Eğitim Bursları\n- Kültürel Geziler\n- Sıra Geceleri\n- Ramazan Ayı İftar Çadırları\n- İhtiyaç Sahiplerine Erzak Yardımı\n\nBu faaliyetler siz değerli üyelerimizin katkılarıyla gerçekleşmektedir.",
       "type": "Sayfa",
-      "date": "09.05.2026"
+      "date": "09.05.2026",
+      "order": 2
     },
     {
       "id": "iletisim",
@@ -70,7 +85,8 @@
       "image": "",
       "content": "Adres: Merkez Mahallesi, Marmara Caddesi No:1, Avcılar / İstanbul\n\nTelefon: 0212 123 45 67\nE-posta: bilgi@avcilarsanliurfa.org.tr\n\nBize her zaman ulaşabilirsiniz.",
       "type": "Sayfa",
-      "date": "09.05.2026"
+      "date": "09.05.2026",
+      "order": 3
     },
     {
       "id": "1778334833446",
@@ -87,14 +103,67 @@
     {
       "id": "1778398766442",
       "title": "GÖBEKLİTEPE",
-      "image": "",
+      "image": "/uploads/1778806148997-724383684.jpg",
       "bgPosition": "50",
       "content": "Göbeklitepe veya Göbekli Tepe, Türkiye'nin Güneydoğu Anadolu Bölgesi'ndeki Şanlıurfa ilinin 18 km kuzeydoğusunda, Haliliye ilçesine bağlı Örencik köyü yakınlarında yer alan[1] Neolitik bir arkeolojik sit alanıdır. MÖ 9600–9500 civarına tarihlenen Göbeklitepe, dünyanın şu ana kadar bilinen en eski tarihî yapısıdır.[2] Bazı popüler kaynaklarda \"tarihin sıfır noktası\" nitelendirmesiyle de anılmaktadır.[3] Yapıt, dünyanın bilinen en eski megalitleri olan taş sütunlarla, bir dizi büyük dairesel yapıdan oluşmaktadır.[4] Çanak Çömleksiz Neolitik Çağ'a ait olduğu düşünülen bu yapıda T biçimindeki 10-12 dikilitaş yuvarlak planda dizilmiş, araları ise taş duvarlarla örülmüştür. Yapının merkezinde daha yüksek boyda olan iki dikilitaş, karşılıklı olarak yerleştirilmiştir.[4] Bu dikilitaşların çoğu üzerinde insan, eller ve kollar, çeşitli hayvan ve soyut semboller, kabartılarak veya oyularak betimlenmiştir. Bölgede yapılan kazılarda çıkartılan bazı heykel ve taşlar, günümüzde Şanlıurfa Arkeoloji Müzesi'nde sergilenmektedir.[5]",
       "type": "TemelDeger",
       "icon": "book-open",
       "link": "https://tr.wikipedia.org/wiki/G%C3%B6beklitepe",
-      "slider": false,
-      "date": "10.05.2026"
+      "slider": true,
+      "date": "10.05.2026",
+      "imageX": 35,
+      "imageY": 39,
+      "imageZoom": 100,
+      "titleColor": "#1a1a2e",
+      "contentColor": "#444444"
+    },
+    {
+      "id": "1778806304413",
+      "title": "Galatasaray Yönetim Kurulu Üyesi Nihat Kırmızı, Avrupa'dan satın aldıkları takımı açıkladı",
+      "image": "/uploads/1778806298371-826812681.png",
+      "imageX": 52,
+      "imageY": 50,
+      "imageZoom": 100,
+      "titleColor": "#1a1a2e",
+      "contentColor": "#444444",
+      "content": "WESTERLO İLE AVRUPA KUPALARINA KATILABİLİRSEK ÖNEMLİ BİR BAŞARI'  Belçika Pro Lig'den Westerlo'yu satın aldıklarını belirten Nihat Kırmızı, \"Westerlo Kulübü, Belçika Ligi'nin şu anda önemli takımlarından biri. Hem altyapısıyla hem de Belçika Pro Ligi'nde oynayan, orada da kalıcı olan bir takım. Bu t",
+      "type": "Haber",
+      "icon": "",
+      "link": "",
+      "slider": true,
+      "date": "15.05.2026",
+      "contentBlocks": [
+        {
+          "type": "heading",
+          "value": "WESTERLO İLE AVRUPA KUPALARINA KATILABİLİRSEK ÖNEMLİ BİR BAŞARI'"
+        },
+        {
+          "type": "image",
+          "url": "/uploads/1778807629591-660826866.jpg",
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "value": "Belçika Pro Lig'den Westerlo'yu satın aldıklarını belirten Nihat Kırmızı, \"Westerlo Kulübü, Belçika Ligi'nin şu anda önemli takımlarından biri. Hem altyapısıyla hem de Belçika Pro Ligi'nde oynayan, orada da kalıcı olan bir takım. Bu takım daha alt ligdeyken iyi bir Galatasaraylı Oktay Ercan isimli bir Türk iş adamı tarafından alınmış, Pro Lig'e çıkarmış. Alt ligden, üst lige çıkmak zor bir iştir. Daha da zorunu yapmış, orada kalıcı olmuş. Bununla da kalmamış, tesisleşmiş. Gittiğiniz zaman hayran kalacağınız tesisleri görebileceksiniz. Bir kasaba takımı olmasına rağmen şu an ligde iddialı. Şu anda işte play-off oynuyor. Ligi 9. bitirdik, play-off'ta da şu an lideriz. İnşallah Konferans Ligi'ne katılmak için mücadele ediyoruz. Avrupa kupalarına katılabilirsek önemli bir başarı olacak. Önümüzdeki sene hedefler daha büyük olacak ama asıl hedef burada oradaki genç oyuncuları Avrupa pazarlarına göstermek. Westerlo aslında baktığınız zaman genç oyuncular için en önemli kulüplerden biri haline gelmiş, yetiştirici kulüp. Bu ülkemizde çok iyi anlatılamamış, çok iyi takip edilmiyor. Westerlo deyince evet bilen biliyor ama birçok kişi onun hangi ligde olduğunu, hangi ülkenin takımı olduğunu bilmeyebilir. Biz de bunları değerlendirdik kendisiyle, konuştuk ve bir ortaklık yapısı kurmaya karar verdik. İşte biz de bunu artık anlatmaya başladık.'' dedi.\n"
+        },
+        {
+          "type": "heading",
+          "value": "WESTERLO'YA GÖNÜL VERİN"
+        },
+        {
+          "type": "paragraph",
+          "value": "Sözlerine devam eden Kırmızı, ''Oktay Bey'in bu muazzam vizyonuna biz de kendi açımızdan bir şeyler katmaya çalıştık. Bir anlamda bu aslında Belçika Ligi takımı olarak görünse de bir Türk takımı. Yani sahiplerinin Türk olduğu, sportif direktörünün, yöneticilerinin Türk olduğu. Belçikalı profesyonel yöneticiler de var. Türk dünyasına, Türk iş dünyasına da Avrupa'ya açılacak bir kapı. Evet Türkiye'de ihracat yapan, Avrupa'yla, Belçika'yla veya diğer Avrupa ülkeleriyle iş yapan birçok işletmemiz var. Evet muazzam ürünler yapan ama bir türlü Avrupa pazarlarına veya ihracata açılamayan birçok firmamız var. İşte biz de onlara diyoruz ki, 'Gelin, bu Westerlo sizin de kapınız olsun. Siz Westerlo'nun çok iyi bir taraftarı, bir destekçisi olun'. Bu sadece maddi anlamda değil yani gönül olarak Westerlo'ya gönül verin bizler de bu kapıyı size açalım, birlikte iş birlikleri yapalım. Bu Türk iş dünyasının milli meselesi gibi görünsün. Ülkemize döviz artırıcı, ihracatı artırıcı bir faaliyet olsun, firmalarımızın görünürlüğü Avrupa'da, dünya markalarında daha fazla öne çıkmaya başlasın. Çünkü Avrupa, dünya için de çok önemli bir pazar. Oralardaki görünürlük sizi dünyanın her yerine taşıyor. Westerlo'yu da bir milli takım gibi görsünler, milli mesele gibi görsünler.\" değerlendirmesini yaptı."
+        },
+        {
+          "type": "heading",
+          "value": "BİR MİLLİ MESELE GİBİ ALGILAYIP ÜLKEMİZE ANLATMALIYIZ"
+        },
+        {
+          "type": "paragraph",
+          "value": "esterlo'nun ardından başka projelerin de olduğunu açıklayan Nihat Kırmızı, \"Oktay Bey ile beraber takip ettiğimiz bir proje daha var. Premier Lig'de, Fransa Ligue 1'de, Portekiz Ligi'nin en üst liginde takımları olan bir kulüple iş birliği yapacağız. Premier Lig'deki bir kulüple bu iş birliğimiz belki ortaklığa dönecek. Prensipte ticari olarak anlaşıldı ama teknik olarak işin futbol tarafındaki teknik olarak bazı konular görüşülüyor. Onlar da aşılabilecek konular. Aşıldıktan sonra zaten bu iş birliği, bu ortaklık da başlamış olacak ve aslında bir anlamda bir anda Westerlo bütün dünyaya, İngiltere Premier Lig'den tutun bütün dünyaya kapılarını açmış bir kulüp haline gelecek. Daha güçlü, daha vizyoner bir kimlik oluşturacağız. Belki Türkiye'den de birçok oyuncu gelecek, şu anda da Türk oyuncularımız var kulüpte, çok da başarılılar. Önümüzdeki dönemlerde yine Westerlo'da da oynayabilirler, Westerlo baktığınız zaman genç bir kulüp. Oktay Bey'in hayali şuymuş; 25 yaşına kadar olan futbolcuları yetiştirmek, aslında 25 yaşın üstündeki futbolcuların da çok iyi bir transfer yapmış olmasını sağlamak. Yetiştirici kulüp kimliği oluşturmak istemiş. Onun ana projesi oymuş ve gerçekten Westerlo şu anda baktığınızda Avrupa'da futbolla ilgilenen kime sorarsanız sorun, hangi ülkede sorarsanız sorun Westerlo deyince yetiştirici kulüp olarak tanınır. Bu çok önemli bir kimliktir yani bunu bizim anlatmamız lazım, ülkemizde de göstermemiz lazım. Burada Fenerli, Beşiktaşlı, Galatasaraylı, Trabzonlu değil, Westerlo herkesin takımıymış bir Türk takımı gibi algılanması ve takip edilmesi gerekir. Oradan da çok önemli oyuncular hem bizim ülkemize gelecek, bizim ülkemizden gençlerimiz belki oraya gidip çok daha iyi transferler yapacak. Çok önemli bir proje. Bu bir milli mesele. Bizim Galatasaraylılığımız doğuştan gelen, hayatımızın sonuna kadar, son nefesimize kadar hayatımızın bir parçası. Nasıl insanlar soyadını değiştiremiyor, biz de Galatasaraylılığımızı hiçbir zaman değiştiremeyiz. Bu ayrı bir konu. Galatasaray'ın her şeyi oluruz; geçmişte Galatasaray taraftarıydık, sponsor olduk. Bugün yöneticisiyiz yarın yine taraftar oluruz, başka bir şey oluruz, yine sponsor oluruz. Galatasaraylılığımız ölmeyecek, o ömür boyu devam edecek ama Westerlo'yu da biz bir milli mesele gibi algılayıp ülkemize, iş dünyasına anlatmalıyız. Burası iş dünyası için bence çok önemli bir kapı ve bunu çok iyi değerlendirebileceğimizi düşünüyorum\" değerlendirmesinde bulundu."
+        }
+      ],
+      "contentHtml": "<h2 class=\"article-heading\">WESTERLO İLE AVRUPA KUPALARINA KATILABİLİRSEK ÖNEMLİ BİR BAŞARI'</h2><figure class=\"article-figure\"><img src=\"/uploads/1778807629591-660826866.jpg\" alt=\"\" loading=\"lazy\"><figcaption></figcaption></figure><p class=\"article-paragraph\">Belçika Pro Lig'den Westerlo'yu satın aldıklarını belirten Nihat Kırmızı, \"Westerlo Kulübü, Belçika Ligi'nin şu anda önemli takımlarından biri. Hem altyapısıyla hem de Belçika Pro Ligi'nde oynayan, orada da kalıcı olan bir takım. Bu takım daha alt ligdeyken iyi bir Galatasaraylı Oktay Ercan isimli bir Türk iş adamı tarafından alınmış, Pro Lig'e çıkarmış. Alt ligden, üst lige çıkmak zor bir iştir. Daha da zorunu yapmış, orada kalıcı olmuş. Bununla da kalmamış, tesisleşmiş. Gittiğiniz zaman hayran kalacağınız tesisleri görebileceksiniz. Bir kasaba takımı olmasına rağmen şu an ligde iddialı. Şu anda işte play-off oynuyor. Ligi 9. bitirdik, play-off'ta da şu an lideriz. İnşallah Konferans Ligi'ne katılmak için mücadele ediyoruz. Avrupa kupalarına katılabilirsek önemli bir başarı olacak. Önümüzdeki sene hedefler daha büyük olacak ama asıl hedef burada oradaki genç oyuncuları Avrupa pazarlarına göstermek. Westerlo aslında baktığınız zaman genç oyuncular için en önemli kulüplerden biri haline gelmiş, yetiştirici kulüp. Bu ülkemizde çok iyi anlatılamamış, çok iyi takip edilmiyor. Westerlo deyince evet bilen biliyor ama birçok kişi onun hangi ligde olduğunu, hangi ülkenin takımı olduğunu bilmeyebilir. Biz de bunları değerlendirdik kendisiyle, konuştuk ve bir ortaklık yapısı kurmaya karar verdik. İşte biz de bunu artık anlatmaya başladık.'' dedi.<br></p><h2 class=\"article-heading\">WESTERLO'YA GÖNÜL VERİN</h2><p class=\"article-paragraph\">Sözlerine devam eden Kırmızı, ''Oktay Bey'in bu muazzam vizyonuna biz de kendi açımızdan bir şeyler katmaya çalıştık. Bir anlamda bu aslında Belçika Ligi takımı olarak görünse de bir Türk takımı. Yani sahiplerinin Türk olduğu, sportif direktörünün, yöneticilerinin Türk olduğu. Belçikalı profesyonel yöneticiler de var. Türk dünyasına, Türk iş dünyasına da Avrupa'ya açılacak bir kapı. Evet Türkiye'de ihracat yapan, Avrupa'yla, Belçika'yla veya diğer Avrupa ülkeleriyle iş yapan birçok işletmemiz var. Evet muazzam ürünler yapan ama bir türlü Avrupa pazarlarına veya ihracata açılamayan birçok firmamız var. İşte biz de onlara diyoruz ki, 'Gelin, bu Westerlo sizin de kapınız olsun. Siz Westerlo'nun çok iyi bir taraftarı, bir destekçisi olun'. Bu sadece maddi anlamda değil yani gönül olarak Westerlo'ya gönül verin bizler de bu kapıyı size açalım, birlikte iş birlikleri yapalım. Bu Türk iş dünyasının milli meselesi gibi görünsün. Ülkemize döviz artırıcı, ihracatı artırıcı bir faaliyet olsun, firmalarımızın görünürlüğü Avrupa'da, dünya markalarında daha fazla öne çıkmaya başlasın. Çünkü Avrupa, dünya için de çok önemli bir pazar. Oralardaki görünürlük sizi dünyanın her yerine taşıyor. Westerlo'yu da bir milli takım gibi görsünler, milli mesele gibi görsünler.\" değerlendirmesini yaptı.</p><h2 class=\"article-heading\">BİR MİLLİ MESELE GİBİ ALGILAYIP ÜLKEMİZE ANLATMALIYIZ</h2><p class=\"article-paragraph\">esterlo'nun ardından başka projelerin de olduğunu açıklayan Nihat Kırmızı, \"Oktay Bey ile beraber takip ettiğimiz bir proje daha var. Premier Lig'de, Fransa Ligue 1'de, Portekiz Ligi'nin en üst liginde takımları olan bir kulüple iş birliği yapacağız. Premier Lig'deki bir kulüple bu iş birliğimiz belki ortaklığa dönecek. Prensipte ticari olarak anlaşıldı ama teknik olarak işin futbol tarafındaki teknik olarak bazı konular görüşülüyor. Onlar da aşılabilecek konular. Aşıldıktan sonra zaten bu iş birliği, bu ortaklık da başlamış olacak ve aslında bir anlamda bir anda Westerlo bütün dünyaya, İngiltere Premier Lig'den tutun bütün dünyaya kapılarını açmış bir kulüp haline gelecek. Daha güçlü, daha vizyoner bir kimlik oluşturacağız. Belki Türkiye'den de birçok oyuncu gelecek, şu anda da Türk oyuncularımız var kulüpte, çok da başarılılar. Önümüzdeki dönemlerde yine Westerlo'da da oynayabilirler, Westerlo baktığınız zaman genç bir kulüp. Oktay Bey'in hayali şuymuş; 25 yaşına kadar olan futbolcuları yetiştirmek, aslında 25 yaşın üstündeki futbolcuların da çok iyi bir transfer yapmış olmasını sağlamak. Yetiştirici kulüp kimliği oluşturmak istemiş. Onun ana projesi oymuş ve gerçekten Westerlo şu anda baktığınızda Avrupa'da futbolla ilgilenen kime sorarsanız sorun, hangi ülkede sorarsanız sorun Westerlo deyince yetiştirici kulüp olarak tanınır. Bu çok önemli bir kimliktir yani bunu bizim anlatmamız lazım, ülkemizde de göstermemiz lazım. Burada Fenerli, Beşiktaşlı, Galatasaraylı, Trabzonlu değil, Westerlo herkesin takımıymış bir Türk takımı gibi algılanması ve takip edilmesi gerekir. Oradan da çok önemli oyuncular hem bizim ülkemize gelecek, bizim ülkemizden gençlerimiz belki oraya gidip çok daha iyi transferler yapacak. Çok önemli bir proje. Bu bir milli mesele. Bizim Galatasaraylılığımız doğuştan gelen, hayatımızın sonuna kadar, son nefesimize kadar hayatımızın bir parçası. Nasıl insanlar soyadını değiştiremiyor, biz de Galatasaraylılığımızı hiçbir zaman değiştiremeyiz. Bu ayrı bir konu. Galatasaray'ın her şeyi oluruz; geçmişte Galatasaray taraftarıydık, sponsor olduk. Bugün yöneticisiyiz yarın yine taraftar oluruz, başka bir şey oluruz, yine sponsor oluruz. Galatasaraylılığımız ölmeyecek, o ömür boyu devam edecek ama Westerlo'yu da biz bir milli mesele gibi algılayıp ülkemize, iş dünyasına anlatmalıyız. Burası iş dünyası için bence çok önemli bir kapı ve bunu çok iyi değerlendirebileceğimizi düşünüyorum\" değerlendirmesinde bulundu.</p>"
     }
   ]
 }

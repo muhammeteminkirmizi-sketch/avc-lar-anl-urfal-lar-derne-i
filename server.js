@@ -132,6 +132,30 @@ app.delete('/api/blogs/:id', checkAuth, (req, res) => {
     res.json({ success: true, blogs: db.blogs });
 });
 
+// Reorder blogs within a group
+app.post('/api/reorder', checkAuth, (req, res) => {
+    const { ids } = req.body;
+    if (!Array.isArray(ids)) return res.status(400).json({ success: false });
+    const db = readDB();
+    ids.forEach((id, index) => {
+        const blog = db.blogs.find(b => b.id === id);
+        if (blog) blog.order = index;
+    });
+    writeDB(db);
+    res.json({ success: true });
+});
+
+// Save section order (which section appears first on homepage)
+app.post('/api/section-order', checkAuth, (req, res) => {
+    const { sectionOrder } = req.body;
+    if (!Array.isArray(sectionOrder)) return res.status(400).json({ success: false });
+    const db = readDB();
+    if (!db.settings) db.settings = {};
+    db.settings.sectionOrder = sectionOrder;
+    writeDB(db);
+    res.json({ success: true });
+});
+
 const DERNEK_ASSISTANT_INSTRUCTION = `Sen Avcılar Şanlıurfa Derneği'nin resmi dijital asistanısın. Görevin dernek üyelerine ve ziyaretçilere yardımcı olmaktır. Sadece dernek tüzüğü, etkinlikler, üyelik süreci ve Şanlıurfa kültürü ile ilgili konularda bilgi ver. Dernek ile ilgili olmayan veya zararlı içerik soranlara 'Bu konu hakkında bilgi veremem, dernek yönetimimize danışabilirsiniz' şeklinde nezaketli bir yanıt ver. Daima nazik, resmi ve yardımsever bir dil kullan. Kullanıcı isterse Şanlıurfa kültürüne uygun samimi yöresel bir üslup kullanabilirsin; yine de resmi saygıyı koru.`;
 
 app.post('/api/assistant', async (req, res) => {

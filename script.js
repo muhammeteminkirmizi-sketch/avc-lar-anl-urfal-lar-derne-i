@@ -1,4 +1,4 @@
-﻿// Initialize Icons
+// Initialize Icons
 lucide.createIcons();
 
 // DOM Elements
@@ -31,7 +31,12 @@ async function loadDynamicData() {
             const homeEl = document.getElementById('home');
             if(homeEl && data.settings.heroImage) {
                 const imgUrl = data.settings.heroImage;
-                homeEl.style.backgroundImage = `linear-gradient(rgba(15, 118, 110, 0.4), rgba(20, 40, 50, 0.7)), url('${imgUrl}')`;
+                const x = data.settings.heroImageX ?? 50;
+                const y = data.settings.heroImageY ?? 50;
+                const zoom = data.settings.heroImageZoom ?? 100;
+                homeEl.style.backgroundImage = `linear-gradient(rgba(15,118,110,0.4),rgba(20,40,50,0.7)),url('${imgUrl}')`;
+                homeEl.style.backgroundSize = `auto, ${zoom}%`;
+                homeEl.style.backgroundPosition = `center, ${x}% ${y}%`;
             }
             
             // Social Links
@@ -59,13 +64,29 @@ async function loadDynamicData() {
         }
 
         // Build Haber Slider
-        buildNewsSlider(data.blogs || []);
+        const sortedBlogs = (data.blogs || []).sort((a,b) => (a.order||0)-(b.order||0));
+        buildNewsSlider(sortedBlogs);
+
+        // Reorder sections based on sectionOrder setting
+        const sectionOrder = data.settings?.sectionOrder || ['haberler', 'temelDegerler'];
+        const statsSection = document.querySelector('.stats-section');
+        const temelSec = document.getElementById('temelDegerlerSection');
+        const haberSec = document.getElementById('haberlerSection');
+        if (statsSection && temelSec && haberSec) {
+            if (sectionOrder[0] === 'temelDegerler') {
+                statsSection.after(temelSec);
+                temelSec.after(haberSec);
+            } else {
+                statsSection.after(haberSec);
+                haberSec.after(temelSec);
+            }
+        }
 
         // Render News and Blogs
         const newsGrid = document.getElementById('newsGrid');
         if(newsGrid) {
             newsGrid.innerHTML = '';
-            
+
             if(data.news && data.news.length > 0) {
                 data.news.forEach(item => {
                     const color = item.type === 'Duyuru' ? 'var(--accent)' : 'var(--primary)';
@@ -80,20 +101,22 @@ async function loadDynamicData() {
                 });
             }
 
-            if(data.blogs && data.blogs.length > 0) {
-                data.blogs.forEach(blog => {
-                    if(blog.type === "Sayfa" || blog.type === "TemelDeger") return; // Bunları haber akışında gösterme
-                    
-                    let imageHtml = blog.image 
-                        ? `<div style="height: 150px; background-image: url('${blog.image}'); background-size: cover; background-position: center; border-radius: 8px; margin-bottom: 1rem;"></div>` 
+            if(sortedBlogs.length > 0) {
+                sortedBlogs.forEach(blog => {
+                    if(blog.type === "Sayfa" || blog.type === "TemelDeger") return;
+                    const bgPos = `${blog.imageX ?? 50}% ${blog.imageY ?? 50}%`;
+                    const bgSize = `${blog.imageZoom ?? 100}%`;
+                    const tCol = blog.titleColor || 'var(--text-main)';
+                    const cCol = blog.contentColor || 'var(--text-muted)';
+                    let imageHtml = blog.image
+                        ? `<div style="height:280px;background-image:url('${blog.image}');background-size:${bgSize};background-position:${bgPos};border-radius:8px;margin-bottom:1rem;"></div>`
                         : '';
-                        
                     newsGrid.innerHTML += `
-                        <div class="glass-panel reveal-up" style="padding: 2rem;">
+                        <div class="glass-panel reveal-up" style="padding:2rem;">
                             ${imageHtml}
-                            <span style="color: var(--text-muted); font-weight: 600; font-size: 0.875rem; margin-bottom: 0.5rem; display: block;">${blog.type || 'Blog'} - ${blog.date}</span>
-                            <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">${blog.title}</h3>
-                            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">${blog.content.substring(0, 80)}...</p>
+                            <span style="color:var(--text-muted);font-weight:600;font-size:.875rem;margin-bottom:.5rem;display:block;">${blog.type || 'Blog'} - ${blog.date}</span>
+                            <h3 style="font-size:1.25rem;margin-bottom:1rem;color:${tCol};">${blog.title}</h3>
+                            <p style="color:${cCol};margin-bottom:1.5rem;">${blog.content.substring(0, 100)}...</p>
                             <a href="page.html?id=${blog.id}" class="card-link">Okumaya Devam Et <i data-lucide="arrow-right"></i></a>
                         </div>
                     `;
@@ -101,26 +124,38 @@ async function loadDynamicData() {
             }
             lucide.createIcons();
         }
-        
+
         // Temel Değerlerimiz section
         const facultiesGrid = document.querySelector('.faculties-grid');
-        if (facultiesGrid && data.blogs) {
-            const temelDegerler = data.blogs.filter(b => b.type === 'TemelDeger');
+        if (facultiesGrid && sortedBlogs) {
+            const temelDegerler = sortedBlogs.filter(b => b.type === 'TemelDeger');
             if (temelDegerler.length > 0) {
-                facultiesGrid.innerHTML = temelDegerler.map(td => `
+                facultiesGrid.innerHTML = temelDegerler.map(td => {
+                    const tCol = td.titleColor || '';
+                    const cCol = td.contentColor || '';
+                    const bgPos = `${td.imageX ?? 50}% ${td.imageY ?? 50}%`;
+                    const bgSize = `${td.imageZoom ?? 100}%`;
+                    const imgWrapper = td.image ? `
+                        <div class="card-image-wrapper">
+                            <div class="card-overlay"></div>
+                            <div class="img-placeholder" style="background-image:url('${td.image}');background-size:${bgSize};background-position:${bgPos};"></div>
+                        </div>` : '';
+                    return `
                     <div class="faculty-card glass-panel reveal-up">
-                        <div class="card-content" style="padding-top: 2.5rem;">
+                        ${imgWrapper}
+                        <div class="card-content" style="${td.image ? '' : 'padding-top:2.5rem;'}">
                             <div class="card-icon"><i data-lucide="${td.icon || 'star'}"></i></div>
-                            <h3>${td.title}</h3>
-                            <p>${td.content}</p>
+                            <h3 style="${tCol ? 'color:' + tCol + ';' : ''}">${td.title}</h3>
+                            <p style="${cCol ? 'color:' + cCol + ';' : ''}">${td.content}</p>
                             <a href="${td.link || '#'}" class="card-link">Detaylı Bilgi <i data-lucide="arrow-right"></i></a>
                         </div>
-                    </div>
-                `).join('');
+                    </div>`;
+                }).join('');
                 lucide.createIcons();
             }
         }
-        
+
+
         // Page.html içeriğini yükleme (Eğer page.html sayfasındaysak)
         const urlParams = new URLSearchParams(window.location.search);
         const pageId = urlParams.get('id');
@@ -135,21 +170,21 @@ async function loadDynamicData() {
                 if(pageData.image) {
                     const pageHeader = document.querySelector('.page-header');
                     if (pageHeader) {
-                        const imgUrl = pageData.image;
-                        pageHeader.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('${imgUrl}')`;
-                        pageHeader.style.backgroundSize = 'cover';
-                        
-                        let pos = pageData.bgPosition || '50';
-                        if (pos === 'top') pos = '0';
-                        if (pos === 'center') pos = '50';
-                        if (pos === 'bottom') pos = '100';
-                        pageHeader.style.backgroundPosition = `center ${pos}%`;
+                        const bgPos = `${pageData.imageX ?? 50}% ${pageData.imageY ?? 50}%`;
+                        const bgSize = `${pageData.imageZoom ?? 100}%`;
+                        pageHeader.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6)),url('${pageData.image}')`;
+                        pageHeader.style.backgroundSize = `auto, ${bgSize}`;
+                        pageHeader.style.backgroundPosition = `center, ${bgPos}`;
                     }
                 }
                 
-                // Basit markdown-vari satır sonu çevrimi
-                const formattedContent = pageData.content.replace(/\n/g, '<br/>');
-                html += `<div style="font-size: 1.125rem; line-height: 1.8; color: var(--text-main);">${formattedContent}</div>`;
+                // Use rich HTML from block editor if available, else fallback to text
+                if (pageData.contentHtml) {
+                    html += `<div style="font-size: 1.125rem; line-height: 1.8; color: var(--text-main);" class="article-content">${pageData.contentHtml}</div>`;
+                } else {
+                    const formattedContent = (pageData.content || '').replace(/\n/g, '<br/>');
+                    html += `<div style="font-size: 1.125rem; line-height: 1.8; color: var(--text-main);" class="article-content">${formattedContent}</div>`;
+                }
                 
                 pageContainer.innerHTML = html;
             } else if (pageContainer) {
@@ -266,6 +301,8 @@ function initObservers() {
 let sliderIndex = 0;
 let sliderItems = [];
 let sliderTimer = null;
+let sliderProgressInterval = null;
+let sliderBlogData = [];
 
 function buildNewsSlider(blogs) {
     const section = document.getElementById('newsSliderSection');
@@ -273,39 +310,57 @@ function buildNewsSlider(blogs) {
     const dotsEl = document.getElementById('sliderDots');
     if (!section || !track) return;
 
-    // Filter blogs with slider:true
-    sliderItems = blogs.filter(b => b.slider === true || b.slider === 'true');
+    // Show ALL haberler & duyurular (not just slider:true)
+    sliderBlogData = blogs.filter(b => b.type === 'Haber' || b.type === 'Duyuru' || b.type === 'Blog');
+    sliderItems = sliderBlogData;
 
-    if (sliderItems.length === 0) { section.style.display = 'none'; return; }
+    const gridWrap = document.getElementById('newsGridWrap');
+
+    if (sliderItems.length === 0) {
+        section.style.display = 'none';
+        if (gridWrap) gridWrap.style.display = 'block';
+        return;
+    }
 
     section.style.display = 'block';
+    if (gridWrap) gridWrap.style.display = 'none';
     sliderIndex = 0;
 
-    track.innerHTML = sliderItems.map(b => {
-        const imgUrl = b.image ? b.image : 'https://images.unsplash.com/photo-1596306499300-0b7b168f19fe?q=80&w=2070&auto=format&fit=crop';
+    const defaultImg = 'https://images.unsplash.com/photo-1596306499300-0b7b168f19fe?q=80&w=2070&auto=format&fit=crop';
+
+    track.innerHTML = sliderItems.map((b, i) => {
+        const imgUrl = b.image ? b.image : defaultImg;
         const typeClass = b.type === 'Duyuru' ? 'slide-type-duyuru' : 'slide-type-haber';
         return `
-            <div class="news-slide" style="background-image:url('${imgUrl}');">
+            <div class="news-slide news-slide-clickable" data-index="${i}" style="background-image:url('${imgUrl}');" onclick="window.location.href='page.html?id=${b.id}'">
                 <div class="news-slide-overlay"></div>
                 <div class="news-slide-content">
                     <span class="news-slide-type ${typeClass}">${b.type || 'Haber'}</span>
                     <h2 class="news-slide-title">${b.title}</h2>
+                    <span class="news-slide-hint"><i style="display:inline-block;width:16px;height:16px;vertical-align:middle;" data-lucide="mouse-pointer-click"></i> Detayları gör</span>
                 </div>
             </div>`;
     }).join('');
 
     // Dots
-    dotsEl.innerHTML = sliderItems.map((_, i) =>
-        `<button class="slider-dot ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})"></button>`
+    if (dotsEl) dotsEl.innerHTML = sliderItems.map((_, i) =>
+        `<button class="slider-dot ${i === 0 ? 'active' : ''}" onclick="event.stopPropagation();goToSlide(${i})"></button>`
     ).join('');
 
+    // Counter
+    updateSliderCounter();
+
     // Arrows
-    document.getElementById('sliderPrev').onclick = () => { sliderMove(-1); resetTimer(); };
-    document.getElementById('sliderNext').onclick = () => { sliderMove(1); resetTimer(); };
+    const prevBtn = document.getElementById('sliderPrev');
+    const nextBtn = document.getElementById('sliderNext');
+    if (prevBtn) prevBtn.onclick = (e) => { e.stopPropagation(); sliderMove(-1); resetTimer(); };
+    if (nextBtn) nextBtn.onclick = (e) => { e.stopPropagation(); sliderMove(1); resetTimer(); };
 
     lucide.createIcons();
     startTimer();
 }
+
+
 
 function goToSlide(idx) {
     sliderIndex = idx;
@@ -322,14 +377,37 @@ function updateSlider() {
     const track = document.getElementById('newsSliderTrack');
     if (track) track.style.transform = `translateX(-${sliderIndex * 100}%)`;
     document.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === sliderIndex));
+    updateSliderCounter();
 }
 
+function updateSliderCounter() {
+    const counter = document.getElementById('sliderCounter');
+    if (counter) counter.textContent = `${sliderIndex + 1} / ${sliderItems.length}`;
+}
+
+let progressVal = 0;
 function startTimer() {
-    sliderTimer = setInterval(() => { sliderMove(1); }, 3000);
+    const INTERVAL = 5000;
+    const TICK = 50;
+    progressVal = 0;
+    const bar = document.getElementById('sliderProgressBar');
+    if (bar) bar.style.width = '0%';
+
+    sliderProgressInterval = setInterval(() => {
+        progressVal += (TICK / INTERVAL) * 100;
+        if (bar) bar.style.width = Math.min(progressVal, 100) + '%';
+        if (progressVal >= 100) {
+            sliderMove(1);
+            progressVal = 0;
+        }
+    }, TICK);
 }
 
 function resetTimer() {
-    clearInterval(sliderTimer);
+    clearInterval(sliderProgressInterval);
+    progressVal = 0;
+    const bar = document.getElementById('sliderProgressBar');
+    if (bar) bar.style.width = '0%';
     startTimer();
 }
 
