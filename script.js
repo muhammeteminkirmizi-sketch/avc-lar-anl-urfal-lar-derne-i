@@ -37,6 +37,7 @@ async function loadDynamicData() {
                 homeEl.style.backgroundImage = `linear-gradient(rgba(15,118,110,0.4),rgba(20,40,50,0.7)),url('${imgUrl}')`;
                 homeEl.style.backgroundSize = `auto, ${zoom}%`;
                 homeEl.style.backgroundPosition = `center, ${x}% ${y}%`;
+                homeEl.style.backgroundRepeat = 'no-repeat, no-repeat';
             }
             
             // Social Links
@@ -173,8 +174,10 @@ async function loadDynamicData() {
                         const bgPos = `${pageData.imageX ?? 50}% ${pageData.imageY ?? 50}%`;
                         const bgSize = `${pageData.imageZoom ?? 100}%`;
                         pageHeader.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6)),url('${pageData.image}')`;
+                        // Mobil için cover daha iyidir ama zoom değerini koruyorsak en azından no-repeat yapalım
                         pageHeader.style.backgroundSize = `auto, ${bgSize}`;
                         pageHeader.style.backgroundPosition = `center, ${bgPos}`;
+                        pageHeader.style.backgroundRepeat = 'no-repeat, no-repeat';
                     }
                 }
                 
